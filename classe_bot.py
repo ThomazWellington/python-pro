@@ -18,4 +18,22 @@ async def hello(ctx):
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
 
+@bot.command()
+async def calcular(ctx, a: float, operador: str, b: float):
+    if operador == "+":
+        resultado = a + b
+    elif operador == "-":
+        resultado = a - b
+    elif operador == "*":
+        resultado = a * b
+    elif operador == "/":
+        if b == 0:
+            await ctx.send("Não dá pra dividir por zero!")
+            return
+        resultado = a / b
+    else:
+        await ctx.send('Operador inválido! Digite "+", "-", "*" ou "/"')
+        return
+
+    await ctx.send(f"O resultado de {a} {operador} {b} é: **{resultado}**")
 bot.run("")

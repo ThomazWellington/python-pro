@@ -46,4 +46,4 @@ async def meme(ctx):
     # Podemos então enviar esse arquivo como um parâmetro
     await ctx.send(file=picture)
 
-bot.run("MTUwNjA3OTIzMzgwNDQ3MjM1MA.GDsxzo.QwXj8_82UhXdFz6O1TgSXGSRSW3hW3Rc_SgGZo")
+bot.run("")

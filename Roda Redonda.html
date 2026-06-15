@@ -1,0 +1,88 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RODA REDONDA MOTORS</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <ul>
+        <div class="container">
+            <img src ="/img/roda redonda logo 2.0.png" alt="rodaredonda", class="logo">
+        </div>
+        <li><a href="carros.html">Carros</a></li>
+        <li><a href="comprar.html">Comprar</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+
+
+    <div class="slideshow-container">
+<!-- Slides -->
+<div class="slide fade">
+<img src="img1.jpg" style="width:100%">
+<div class="caption">Legenda 1</div>
+</div>
+<div class="slide fade">
+<img src="img2.jpg" style="width:100%">
+<div class="caption">Legenda 2</div>
+</div>
+<div class="slide fade">
+<img src="img3.jpg" style="width:100%">
+<div class="caption">Legenda 3</div>
+</div>
+
+<!-- Botões de navegação -->
+<a class="prev" onclick="changeSlide(-1)">❮</a>
+<a class="next" onclick="changeSlide(1)">❯</a>
+</div>
+
+    <img id="sedan" src="img/honda-hr-v-2026-estatica.webp" alt="">
+
+    </body>
+    </html>
+css:
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h2, p {
+  margin: 20px;
+}
+
+ul {
+  list-style-type: none;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  display: flex;
+}
+
+ul li a {
+  display: flex;
+  color: white;
+  padding: 35px 30px;
+  text-decoration: none;
+  justify-content: center;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+img{
+width: 1255px;
+height: 550px;
+}
+
+.container{
+    display: flex;
+    align-self: center;
+}
+
+.logo{
+    width: 100px;
+    height: 80px;
+}

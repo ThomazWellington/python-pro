@@ -17,29 +17,8 @@
         <li><a href="sobre.html">Sobre</a></li>
     </ul>
 
-
-    <div class="slideshow-container">
-<!-- Slides -->
-<div class="slide fade">
-<img src="img1.jpg" style="width:100%">
-<div class="caption">Legenda 1</div>
-</div>
-<div class="slide fade">
-<img src="img2.jpg" style="width:100%">
-<div class="caption">Legenda 2</div>
-</div>
-<div class="slide fade">
-<img src="img3.jpg" style="width:100%">
-<div class="caption">Legenda 3</div>
-</div>
-
-<!-- Botões de navegação -->
-<a class="prev" onclick="changeSlide(-1)">❮</a>
-<a class="next" onclick="changeSlide(1)">❯</a>
-</div>
-
-    <img id="sedan" src="img/honda-hr-v-2026-estatica.webp" alt="">
-
+    <img id="sedan" src="img/honda hrv.jpg" alt="">
+    <iframe src="https://www.meteoblue.com/pt/tempo/widget/daily/ip_rom%c3%aania_675514?geoloc=fixed&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&days=7&coloured=monochrome&pictoicon=1&maxtemperature=1&mintemperature=1&windspeed=1&windgust=1&winddirection=1&uv=0&humidity=0&precipitation=1&precipitationprobability=1&spot=1&pressure=1&layout=light&user_key=8e0139dd9d206629&embed_key=120dddc281ad36ae&sig=a26231cdeee09f41f2fdd20e7375fddae7257319eda20bc0b5bbd44b9a68dc00" frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 378px;height: 383px;border: 0;overflow: hidden;"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/pt/tempo/semana/index" target="_blank" rel="noopener">meteoblue</a></div>
     </body>
     </html>
 css:
@@ -73,16 +52,25 @@ ul li a:hover {
   background-color: #111111;
 }
 img{
-width: 1255px;
-height: 550px;
+width: 550px;
+height: 250px;
 }
 
 .container{
     display: flex;
     align-self: center;
 }
+@keyframes color_change{
+    0% {color: blue;}
+    50% {color: red;}
+    100%{color: indigo;}
+}
 
 .logo{
     width: 100px;
     height: 80px;
+}
+ul li a:hover{
+    animation-name: color_change;
+    animation-duration: 13s;
 }

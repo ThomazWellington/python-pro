@@ -1,0 +1,94 @@
+import random
+import time
+import speech_recognition as sr
+from deep_translator import GoogleTranslator
+import sounddevice as sd
+import numpy as np
+import scipy.io.wavfile as wav
+import speech_recognition as sr
+
+sample_rate = 44100
+duration = 4  # segundos de gravação
+
+# Inicializando tradutor e reconhecedor de voz
+recognizer = sr.Recognizer()
+
+# Banco de palavras divididas por dificuldade
+palavras_por_nivel = {
+    "fácil": {"gato": "cat", "cachorro": "dog", "casa": "house", "água": "water", "livro": "book"},
+    "médio": {"computador": "computer", "janela": "window", "amarelo": "yellow", "cadeira": "chair", "escola": "school"},
+    "difícil": {"desenvolvimento": "development", "conhecimento": "knowledge", "extraordinário": "extraordinary", "oportunidade": "opportunity"}
+}
+
+def ouvir_microfone():
+    
+        # 🎙 Gravação da fala
+    print("🎙 Fale agora...")
+    recording = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype="int16")
+    sd.wait()
+    wav.write("output.wav", sample_rate, recording)
+    print("✅ Gravação concluída, reconhecendo...")
+
+    try:
+        with sr.AudioFile("output.wav") as source:
+            audio = recognizer.record(source)
+
+        recognised = recognizer.recognize_google(audio, language="en").lower()
+        print("📝 Você disse:", recognised)
+        return recognised
+    except sr.UnknownValueError:
+        errors += 1
+        print(f"😕 Speech could not be recognised. Errors: {errors}")
+
+
+def jogar(): 
+    print("\n escolha a dificuldade:")
+    print("1 - Fácil")
+    print("2 - Médio")
+    print("3 - Difícil")
+    
+    opcao = input("Digite o número da dificuladade: ").strip()
+    
+    if opcao == "1":
+        nivel = "fácil"
+    elif opcao == "2":
+        nivel = "médio"
+    elif opcao == "3":
+        nivel = "difícil"
+    else:
+        print(" inválido! dificuldade: 'Fácil'.")
+        nivel = "fácil"
+
+    vocabulario = palavras_por_nivel[nivel]
+    chances = 3
+    pontos = 0
+    
+    # Lista de palavras do nível escolhido
+    perguntas = list(vocabulario.items())
+    random.shuffle(perguntas)
+
+    print(f"\n dificuladade selecionada: {nivel.upper()} | chances restantes: {chances}")
+    print("Vamos começar!\n")
+
+    for pt, en in perguntas:
+        if chances <= 0:
+            break
+            
+        print(f"Traduza para o inglês: 🇧🇷 **{pt.upper()}**")
+        
+        # O usuário fala a resposta
+        resposta_usuario = ouvir_microfone()
+        print(f"Você disse: '{resposta_usuario}'")
+        
+        if resposta_usuario == en:
+            print("Certa Resposta! +10 pontos.")
+            pontos += 10
+        else:
+            print(f"Errou!! era: '{en}'")
+            chances -= 1
+            print(f"chances restantes: {chances}")
+            
+    print(f"Pontuação: {pontos} pontos")
+    print("parábens")
+if __name__ == "__main__":
+    jogar()
